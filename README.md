@@ -61,6 +61,8 @@ Response:
     ]
 }
 
+Message will be printed on Console For example  if it is delivered like this "Message Delivered:" and if it has error "Error Wrong Number/Email"
+
 2) statistics API ENDPOINT:- http://127.0.0.1:8000/statistics
 
 Response:
