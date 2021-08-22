@@ -23,12 +23,22 @@ class NotificationService(object):
             d['time'] = time
             duplicacy_flag,send_again = NotificationService.check_duplicate(d,client_id)
             if d['type'] == 'email':
-                d['status'] = Sender.sendmail(contact,message)
-                response.append(d)
+                if duplicacy_flag:
+                    if send_again:
+                        d['status'] = Sender.sendmail(contact,message)
+                        response.append(d)
+                else:
+                    d['status'] = Sender.sendmail(contact,message)
+                    response.append(d)
             
             if d['type'] == 'sms':
-                d['status'] = Sender.sendsms(contact,message)
-                response.append(d)
+                if duplicacy_flag:
+                    if send_again:
+                        d['status'] = Sender.sendsms(contact,message)
+                        response.append(d)
+                else:
+                    d['status'] = Sender.sendsms(contact,message)
+                    response.append(d)
 
             if date not in stats[client_id]:
                stats[client_id][date]={ 'total_message':0,'failed_message':0,'duplicate_message':0}
