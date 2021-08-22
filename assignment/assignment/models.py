@@ -27,6 +27,7 @@ class NotificationService(object):
             date = time.day
             month = time.month
             date = str(date)+"-"+str(month)+"-"+str(year)
+            #storing datetime of the sent message to use it in searching and finding duplicates
             d['time'] = time
             duplicacy_flag,send_again = NotificationService.check_duplicate(d,client_id)
             #print(duplicacy_flag,send_again)
@@ -54,6 +55,7 @@ class NotificationService(object):
                     d['status'] = Sender.sendsms(contact,message)
                     response.append(d)
 
+            #initializing the metrics for each client on a particular date
             if date not in stats[client_id]:
                stats[client_id][date]={ 'total_message':0,'failed_message':0,'duplicate_message':0}
 
@@ -75,7 +77,7 @@ class NotificationService(object):
         return stats    
 
     def check_duplicate(data,client_id):
-        
+        #for checking the duplicate messages within a duration
         contact = data['contact']
         now_time = data['time']
         #print(details)
@@ -96,7 +98,7 @@ class NotificationService(object):
         if client_id not in details:
             return []
         data = details[client_id]
-        now = datetime.datetime.now() 
+        now = datetime.datetime.now() #stores the present datetime
         response = []
         if status:
             status = int(status)
@@ -106,6 +108,7 @@ class NotificationService(object):
                 if status:
                     if status==info['status']:
                         later = info['time']
+                        #find the diff between sent message time and present
                         diff = int((now-later).total_seconds())
                         if time!=0 and diff<= time:
                             body['contact']=key
