@@ -15,6 +15,7 @@ python manage.py runserver
 
 # How to get responses:
 1) notification sender API ENDPOINT:- http://127.0.0.1:8000/send.notification?client_id=CX8291
+
 body of this api :-
  [{
     "message":"Order updated",
@@ -33,7 +34,9 @@ body of this api :-
     "contact":"9000000002"
 }
 ]
+
 Response:
+
 {
     "status": "success",
     "result": [
@@ -59,6 +62,7 @@ Response:
 }
 
 2) statistics API ENDPOINT:- http://127.0.0.1:8000/statistics
+
 Response:
 {
     "status": "success",
@@ -72,8 +76,11 @@ Response:
         }
     }
 }
+
 3) Search API endpoint:- http://127.0.0.1:8000/search?client_id=CX8291&time=320&status=-1
+
    time params should be in seconds
+   
    status of messages: 0 means duplicate message
                        1 means message delivered
                       -1 means message not delivered
