@@ -1,7 +1,13 @@
 import json
 from .sender import Sender
 import datetime
+#stats contains all client_ids and their metrics partitioned by date
+#{client_id:{date:{metrices}}}
 stats = {}
+#details dict contains all the messages sent by client key is client_id
+# and then inside client_id there is a dict with key contact_number 
+# and value is a list of all the details
+#{client_id:{contact:[]}}
 details ={}
 
 class NotificationService(object):

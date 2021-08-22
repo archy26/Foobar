@@ -8,6 +8,7 @@ class Sender(object):
 
         if Sender.email_validation(email):
             i=0
+            #trying threee times
             while i<3:
                 try:
                     # server=smtplib.SMTP_SSL("smtp.gmail.com",465)
@@ -28,6 +29,7 @@ class Sender(object):
     def sendsms(number,message):
         if Sender.number_validation(number):
             i=0
+            #trying three times
             while i<3:
                 try:
                     #code for sms provider
