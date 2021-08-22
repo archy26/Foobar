@@ -2,8 +2,6 @@ from django.http import JsonResponse,HttpResponse
 from .models import NotificationService
 from django.views.decorators.csrf import csrf_exempt
 import copy
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
 
 @csrf_exempt
 def sendNotification(request):
