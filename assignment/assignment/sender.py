@@ -1,8 +1,8 @@
 import re
 import smtplib
 
-HOST_EMAIL="architsharma846@gmail.com"
-HOST_PASSWORD="8295156554"
+HOST_EMAIL=""
+HOST_PASSWORD=""
 class Sender(object):
     def sendmail(email,message):
 
@@ -10,28 +10,41 @@ class Sender(object):
             i=0
             while i<3:
                 try:
-                    server=smtplib.SMTP_SSL("smtp.gmail.com",465)
-                    server.login(HOST_EMAIL,HOST_PASSWORD)
-                    server.send_message(HOST_EMAIL,email,message)
-                    server.quit()
+                    # server=smtplib.SMTP_SSL("smtp.gmail.com",465)
+                    # server.login(HOST_EMAIL,HOST_PASSWORD)
+                    # server.send_message(HOST_EMAIL,email,message)
+                    # server.quit()
+                    print(message)
                     return 1
                 except:
                     if i==2:
                         return -1
+                    i+=1
                     pass
         else:
+            print("ERROR: WRONG EMAIL")
             return -1
 
     def sendsms(number,message):
         if Sender.number_validation(number):
-            print(message)
-            return 1
+            i=0
+            while i<3:
+                try:
+                    #code for sms provider
+                    print(message)
+                    return 1
+                except:
+                    if i==2:
+                        return -1
+                    i+=1
+                    pass
         else:
+            print("ERROR: WRONG NUMBER")
             return -1
 
     def email_validation(email):
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-        if re.fullmatch(email):
+        if re.fullmatch(regex,email):
             return True
         else:
             return False
