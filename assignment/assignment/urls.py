@@ -18,7 +18,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^index$',views.index),
+    
     url(r'^send.notification$',views.sendNotification),
     url(r'^statistics$',views.statistics),
     url(r'^search$',views.search)
