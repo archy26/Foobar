@@ -14,7 +14,7 @@ class Sender(object):
                     # server.login(HOST_EMAIL,HOST_PASSWORD)
                     # server.send_message(HOST_EMAIL,email,message)
                     # server.quit()
-                    print(message)
+                    print("Message Delivered: " + message)
                     return 1
                 except:
                     if i==2:
@@ -31,7 +31,7 @@ class Sender(object):
             while i<3:
                 try:
                     #code for sms provider
-                    print(message)
+                    print("Message Delivered: " + message)
                     return 1
                 except:
                     if i==2:
