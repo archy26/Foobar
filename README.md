@@ -16,6 +16,8 @@ python manage.py runserver
 # How to get responses:
 1) notification sender API ENDPOINT:- http://127.0.0.1:8000/send.notification?client_id=CX8291
 
+Make a POST request
+
 body of this api :-
  [{
     "message":"Order updated",
